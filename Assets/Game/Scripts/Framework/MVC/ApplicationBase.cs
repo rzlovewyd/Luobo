@@ -9,8 +9,8 @@ public abstract class ApplicationBase<T> : Singleton<T>
         MVC.RegisterController(eventName, controllerType);
     }
 
-    protected void SendEvent(string eventName)
+    protected void SendEvent(string eventName, object data = null)
     {
-        MVC.SendEvent(eventName);
+        MVC.SendEvent(eventName, data);
     }
 }
