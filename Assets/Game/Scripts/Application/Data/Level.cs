@@ -10,6 +10,11 @@ public class Level
     public string Name;
 
     /// <summary>
+    /// 卡片
+    /// </summary>
+    public string CardImage;
+
+    /// <summary>
     /// 背景
     /// </summary>
     public string Background;
