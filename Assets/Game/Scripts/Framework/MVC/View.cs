@@ -10,8 +10,11 @@ public abstract class View : MonoBehaviour
     [HideInInspector]
     public List<string> AttationEvents = new List<string>();
 
+    //注册关心的事件
+    public virtual void RegisterEvents() { }
+
     //事件处理函数
-    public abstract void HandleEvent(string eventName, object obj);
+    public abstract void HandleEvent(string eventName, object data);
 
     //获取模型
     protected Model GetModel<T>() where T : Model

@@ -1,8 +1,8 @@
-﻿
-/// <summary>
-/// 选择关卡界面
-/// </summary>
-public class UISelect : View 
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public class UIComplete : View
 {
     #region 常量
     #endregion
@@ -11,38 +11,37 @@ public class UISelect : View
     #endregion
 
     #region 字段
+    public Button BtnClear;
+    public Button BtnSelect;
     #endregion
 
     #region 属性
     public override string Name
     {
-        get { return Consts.V_Select; }
+        get { return Consts.V_Complete; }
     }
     #endregion
 
     #region 方法
-    //返回开始界面
-    public void GoBack()
-    {
-        Game.Instance.LoadScene(1);
-    }
-
-    //选中关卡游戏
-    public void ChooseLevel()
-    {
-        StartLevelArgs e = new StartLevelArgs()
-        {
-            LevelID = 0
-        };
-
-        SendEvent(Consts.E_StartLevel, e);
-    }
     #endregion
 
     #region Unity回调
     #endregion
 
     #region 事件回调
+    public void OnBtnClearClick()
+    {
+
+    }
+    public void OnBtnSelectClick()
+    {
+        //回到开始界面
+        Game.Instance.LoadScene(1);
+    }
+    public override void RegisterEvents()
+    {
+
+    }
     public override void HandleEvent(string eventName, object data)
     {
         
@@ -51,4 +50,7 @@ public class UISelect : View
 
     #region 帮助方法
     #endregion
+
+
+
 }

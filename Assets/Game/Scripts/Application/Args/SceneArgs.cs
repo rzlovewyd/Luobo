@@ -2,10 +2,10 @@
 public class SceneArgs 
 {
     //场景索引
-    public int Level;
+    public int SceneIndex;
 
-    public SceneArgs(int level)
+    public SceneArgs(int sceneIndex)
     {
-        this.Level = level;
+        this.SceneIndex = sceneIndex;
     }
 }

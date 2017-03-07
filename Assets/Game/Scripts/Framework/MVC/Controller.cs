@@ -31,5 +31,5 @@ public abstract class Controller
     }
 
     //处理系统消息
-    public abstract void Execute(object obj);
+    public abstract void Execute(object data);
 }

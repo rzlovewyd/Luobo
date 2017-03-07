@@ -12,8 +12,11 @@ using UnityEngine.SceneManagement;
 public class Game : ApplicationBase<Game> 
 {
     //全局访问的功能
+    [HideInInspector]
     public Sound Sound = null;              //声音控制
+    [HideInInspector]
     public ObjectPool ObjectPool = null;    //对象池
+    [HideInInspector]
     public StaticData StaticData = null;    //静态数据
     //全局的方法
 

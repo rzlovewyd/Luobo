@@ -16,6 +16,7 @@ public static class MVC
 
     public static void RegisterView(View view)
     {
+        view.RegisterEvents();
         Views[view.Name] = view;
     }
 

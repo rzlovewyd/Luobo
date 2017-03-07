@@ -12,6 +12,11 @@ public static class Consts
     //视图
     public const string V_Start = "V_Start";
     public const string V_Select = "V_Select";
+    public const string V_UIBoard = "V_UIBoard";
+    public const string V_UICountDown = "V_UICountDown";
+    public const string V_UIWin = "V_UIWin";
+    public const string V_UILost = "V_UILost";
+    public const string V_UISystem = "V_UISystem";
     public const string V_Complete = "V_Complete";
 
     //事件
@@ -23,6 +28,7 @@ public static class Consts
     public const string E_StartLevel = "E_StartLevel";  //StartLevelArgs
     public const string E_EndLevel = "E_EndLevel";      //EndtLevelArgs
 
+    public const string E_CountDownComplete = "E_CountDownComplete";
 
     #region 常量
     #endregion
@@ -47,4 +53,10 @@ public static class Consts
 
     #region 帮助方法
     #endregion
+}
+
+public enum GameSpeed
+{
+    One,
+    Two
 }

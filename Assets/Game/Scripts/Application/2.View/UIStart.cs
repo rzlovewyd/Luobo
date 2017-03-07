@@ -14,7 +14,7 @@ public class UIStart : View
         Game.Instance.LoadScene(2);
     }
 
-    public override void HandleEvent(string eventName, object obj)
+    public override void HandleEvent(string eventName, object data)
     {
         
     }

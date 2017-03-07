@@ -4,7 +4,7 @@ using System;
 
 public class ExitCommand : Controller 
 {
-    public override void Execute(object obj)
+    public override void Execute(object data)
     {
         
     }
