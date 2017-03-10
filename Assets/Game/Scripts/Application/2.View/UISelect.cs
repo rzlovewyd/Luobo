@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 /// <summary>
@@ -13,6 +14,8 @@ public class UISelect : View
     #endregion
 
     #region 字段
+    public Button btnStart;
+
     List<Card> m_Cards = new List<Card>();
     int m_SelectIndex = -1;
     GameModel m_GameModel = null;
@@ -56,7 +59,6 @@ public class UISelect : View
             {
                 LevelID = i,
                 CardImage = levels[i].CardImage,
-                //TODO:
                 IsLocked = i > m_GameModel.GameProgress
             };
             m_Cards.Add(card);
@@ -107,6 +109,8 @@ public class UISelect : View
         //当前
         container.GetChild(1).GetComponent<UICard>().DataBind(m_Cards[current]);
         container.GetChild(1).GetComponent<UICard>().IsTransparent = false;
+        //控开始按钮状态
+        btnStart.gameObject.SetActive(!m_Cards[current].IsLocked);
 
         //右边
         if (right >= m_Cards.Count)
