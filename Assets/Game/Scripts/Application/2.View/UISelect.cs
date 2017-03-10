@@ -1,10 +1,10 @@
-﻿
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 /// <summary>
 /// 选择关卡界面
 /// </summary>
-public class UISelect : View 
+public class UISelect : View
 {
     #region 常量
     #endregion
@@ -13,8 +13,9 @@ public class UISelect : View
     #endregion
 
     #region 字段
-    List<Card> m_Card = new List<Card>();
+    List<Card> m_Cards = new List<Card>();
     int m_SelectIndex = -1;
+    GameModel m_GameModel = null;
     #endregion
 
     #region 属性
@@ -36,7 +37,7 @@ public class UISelect : View
     {
         StartLevelArgs e = new StartLevelArgs()
         {
-            LevelID = 0
+            LevelID = m_SelectIndex
         };
 
         SendEvent(Consts.E_StartLevel, e);
@@ -45,14 +46,8 @@ public class UISelect : View
     //初始化卡片
     void LoadCards()
     {
-        //构建Level集合
-        List<FileInfo> files = Tools.GetLevelFiles();
-        List<Level> levels = new List<Level>();
-        for (int i = 0; i < files.Count; i++)
-        {
-            Level level = new Level();
-            Tools.FillLevel(files[i].FullName, ref level);
-        }
+        //获取Level集合
+        List<Level> levels = m_GameModel.AllLevels;
 
         //构建Card集合
         for (int i = 0; i < levels.Count; i++)
@@ -62,9 +57,19 @@ public class UISelect : View
                 LevelID = i,
                 CardImage = levels[i].CardImage,
                 //TODO:
-                IsLocked = true
+                IsLocked = i > m_GameModel.GameProgress
             };
-            m_Card.Add(card);
+            m_Cards.Add(card);
+        }
+
+        //监听卡片点击事件
+        UICard[] uiCards = transform.FindChild("UICards").GetComponentsInChildren<UICard>();
+        foreach (UICard uiCard in uiCards)
+        {
+            uiCard.OnClick += (card) =>
+            {
+                SelectCard(card.LevelID);
+            };
         }
 
         //默认选择第1个卡片
@@ -80,6 +85,40 @@ public class UISelect : View
         m_SelectIndex = index;
 
         //计算索引
+        int left = m_SelectIndex - 1;
+        int current = m_SelectIndex;
+        int right = m_SelectIndex + 1;
+
+        //绑定数据
+        Transform container = transform.FindChild("UICards");
+
+        //左边
+        if (left < 0)
+        {
+            container.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            container.GetChild(0).gameObject.SetActive(true);
+            container.GetChild(0).GetComponent<UICard>().IsTransparent = true;
+            container.GetChild(0).GetComponent<UICard>().DataBind(m_Cards[left]);
+        }
+
+        //当前
+        container.GetChild(1).GetComponent<UICard>().DataBind(m_Cards[current]);
+        container.GetChild(1).GetComponent<UICard>().IsTransparent = false;
+
+        //右边
+        if (right >= m_Cards.Count)
+        {
+            container.GetChild(2).gameObject.SetActive(false);
+        }
+        else
+        {
+            container.GetChild(2).gameObject.SetActive(true);
+            container.GetChild(2).GetComponent<UICard>().IsTransparent = true;
+            container.GetChild(2).GetComponent<UICard>().DataBind(m_Cards[right]);
+        }
     }
     #endregion
 
@@ -97,8 +136,9 @@ public class UISelect : View
         switch (eventName)
         {
             case Consts.E_EnterScene:
-                if(((SceneArgs)data).SceneIndex == 2)
+                if (((SceneArgs)data).SceneIndex == 2)
                 {
+                    m_GameModel = GetModel<GameModel>();
                     //初始化卡片
                     LoadCards();
                 }

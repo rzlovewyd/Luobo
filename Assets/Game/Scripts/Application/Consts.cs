@@ -9,6 +9,12 @@ public static class Consts
     public static readonly string MapDir = Application.dataPath + @"/Game/Res/Maps/";
     public static readonly string CardDir = Application.dataPath + @"/Game/Res/Cards/";
 
+    //存档
+    public const string GameProgress = "GameProgress";
+
+    //Model
+    public const string M_GameModel = "M_GameModel";
+
     //视图
     public const string V_Start = "V_Start";
     public const string V_Select = "V_Select";

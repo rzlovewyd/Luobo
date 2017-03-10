@@ -43,9 +43,6 @@ public class UICard : MonoBehaviour,IPointerDownHandler
         //加载图片
         string smallMapFile = "file://" + Consts.CardDir + card.CardImage;
         StartCoroutine(Tools.LoadImage(smallMapFile, ImgCard));
-
-        //是否透明
-        IsTransparent = card.IsLocked;
         
         //是否锁定
         ImgLock.gameObject.SetActive(card.IsLocked);

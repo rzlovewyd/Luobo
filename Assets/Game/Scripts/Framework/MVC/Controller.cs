@@ -5,14 +5,14 @@ using System;
 public abstract class Controller 
 {
     //获取模型
-    protected Model GetModel<T>() where T :Model
+    protected T GetModel<T>() where T :Model
     {
-        return MVC.GetModel<T>();
+        return (T)MVC.GetModel<T>();
     }
     //获取视图
-    protected View GetView<T>() where T : View
+    protected T GetView<T>() where T : View
     {
-        return MVC.GetView<T>();
+        return (T)MVC.GetView<T>();
     }
 
     protected void RegisterModel(Model model)
