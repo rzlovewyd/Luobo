@@ -59,7 +59,7 @@ public class UISelect : View
             {
                 LevelID = i,
                 CardImage = levels[i].CardImage,
-                IsLocked = i > m_GameModel.GameProgress
+                IsLocked = i > m_GameModel.GameProgress + 1
             };
             m_Cards.Add(card);
         }

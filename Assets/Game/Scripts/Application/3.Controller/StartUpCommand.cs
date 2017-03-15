@@ -10,6 +10,7 @@
         RegisterController(Consts.E_ExitScene, typeof(ExitCommand));
         RegisterController(Consts.E_StartLevel, typeof(StartLevelCommand));
         RegisterController(Consts.E_EndLevel, typeof(EndLevelCommand));
+        RegisterController(Consts.E_CountDownComplete, typeof(CountDownCompleteCommand));
 
         //初始化
         GameModel gm = GetModel<GameModel>();

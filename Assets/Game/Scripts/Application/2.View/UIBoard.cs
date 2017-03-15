@@ -84,14 +84,11 @@ public class UIBoard : View
     #endregion
 
     #region Unity回调
-    public UICountDown UICountDown;
     void Awake()
     {
         Score = 0;
         IsPlaying = true;
         Speed = GameSpeed.One;
-
-        UICountDown.StartCountDown();
     }
     #endregion
 
@@ -119,7 +116,6 @@ public class UIBoard : View
     public override void RegisterEvents()
     {
         //注册关心的事件
-        AttationEvents.Add(Consts.E_CountDownComplete);
     }
     public override void HandleEvent(string eventName, object data)
     {
@@ -129,8 +125,8 @@ public class UIBoard : View
 
                 //开始出怪
 
-                //游侠结束
-                Game.Instance.LoadScene(4);
+                //游戏结束
+                //Game.Instance.LoadScene(4);
                 break;
         }
     }
