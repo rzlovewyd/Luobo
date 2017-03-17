@@ -14,6 +14,7 @@ public static class Consts
 
     //Model
     public const string M_GameModel = "M_GameModel";
+    public const string M_RoundModel = "M_RoundModel";
 
     //视图
     public const string V_Start = "V_Start";
@@ -35,6 +36,9 @@ public static class Consts
     public const string E_EndLevel = "E_EndLevel";      //EndtLevelArgs
 
     public const string E_CountDownComplete = "E_CountDownComplete";
+
+    public const string E_StartRound = "E_StartRound";      //StartRoundArgs
+    public const string E_SpawnMonster = "E_SpawnMonster";  //SpawnMonsterArgs
 
     #region 常量
     #endregion
