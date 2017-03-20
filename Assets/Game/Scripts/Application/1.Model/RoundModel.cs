@@ -48,13 +48,12 @@ public class RoundModel : Model
 
     public void StartRound()
     {
-        Game.Instance.StopCoroutine("RunRound");
-        Game.Instance.StartCoroutine("RunRound");
+        Game.Instance.StartCoroutine(RunRound());
     }
 
-    public void CancelRound()
+    public void StopRound()
     {
-        Game.Instance.StopCoroutine("RunRound");
+        Game.Instance.StopCoroutine(RunRound());
     }
 
     IEnumerator RunRound()

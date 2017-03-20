@@ -24,6 +24,7 @@ public class EnterSceneCommand : Controller
                 RegisterView(GameObject.Find("Canvas").transform.FindChild("UIWin").GetComponent<UIWin>());
                 RegisterView(GameObject.Find("Canvas").transform.FindChild("UILost").GetComponent<UILost>());
                 RegisterView(GameObject.Find("Canvas").transform.FindChild("UISystem").GetComponent<UISystem>());
+                RegisterView(GameObject.Find("Map").GetComponent<Spawner>());
                 break;
             case 4://Complete
                 RegisterView(GameObject.Find("UIComplete").GetComponent<UIComplete>());

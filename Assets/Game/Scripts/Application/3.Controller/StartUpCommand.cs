@@ -4,6 +4,7 @@
     {
         //注册模型（Model）
         RegisterModel(new GameModel());
+        RegisterModel(new RoundModel());
 
         //注册命令（Conroller）
         RegisterController(Consts.E_EnterScene, typeof(EnterSceneCommand));

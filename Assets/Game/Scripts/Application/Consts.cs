@@ -25,6 +25,7 @@ public static class Consts
     public const string V_UILost = "V_UILost";
     public const string V_UISystem = "V_UISystem";
     public const string V_Complete = "V_Complete";
+    public const string V_Spawner = "V_Spawner";
 
     //事件
     public const string E_StartUp = "E_StartUp";
